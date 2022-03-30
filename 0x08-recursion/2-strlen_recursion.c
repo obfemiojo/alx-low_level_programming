@@ -1,14 +1,18 @@
-#include "mian.h"
-
+#include "main.h"
+int taille = 0;
 /**
- * _strlen_recursion - returns the length of a string
- * @s: input string
- * Return: length of s
+ * _strlen_recursion - function
+ *
+ * @s: the chaine
+ * Return: Always 0.
  */
 
 int _strlen_recursion(char *s)
 {
-	if (!*s)
-		return (0);
-	return (1 + _strlen_recursion(++s));
+	if (s[taille] != '\0')
+	{
+		taille++;
+		_strlen_recursion(s);
+	}
+	return (taille);
 }
