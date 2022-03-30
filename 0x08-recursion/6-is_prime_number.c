@@ -1,29 +1,36 @@
-#include "mainh"
 
 /**
- * isPrime - helper function for is_prime_number
- * @n: input number
- * @i: iterator
- * Return: 1 if true, 0 if false
+ * prime - function
+ * @n: the number
+ * @i: the number
+ * Return: Always 0
  */
-int isPrime(int n, int i)
+
+int prime(int n, int i)
 {
-	if (i == 1)
+	if (i > 1)
+	{
+		if (n % i == 0)
+			return (0);
+		else
+			return (prime(n, i - 1));
+	}
+	else
 		return (1);
-	if (n % i == 0)
-		return (0);
-	return (isPrime(n, i - 1));
 }
 
 /**
- * is_prime_number - returns 1 if the input integer is a prime number,
- * otherwise return 0
- * @n: input number
- * Return: 1 if true, 0 if false
+ * is_prime_number - function
+ *
+ * @n: the number
+ * Return: Always 0.
  */
+
 int is_prime_number(int n)
 {
-	if (n < 3)
+	if (n < 0)
 		return (0);
-	return (isPrime(n, n - 1));
+	if (n == 1)
+		return (0);
+	return (prime(n, n - 1));
 }
