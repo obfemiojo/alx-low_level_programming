@@ -1,5 +1,4 @@
 #include "main.h"
-int taille = 0;
 /**
  * _strlen_recursion - function
  *
