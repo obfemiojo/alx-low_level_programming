@@ -1,57 +1,44 @@
-#include<stdlib.h>
-#include<stdio.h>
-
+#include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
 /**
- * ft_strlen - a function
- * @str: the chaine
- *
- * Return: 1 or 0
- */
-
-int ft_strlen(char *str)
-{
-	int i = 0;
-
-	while (str[i])
-		i++;
-	return (i);
-}
-
-
-/**
- * argstostr - a function ...
- * @ac: the number
- * @av: the list of arguments
- *
- * Return: 1 or 0
+ * argstostr - concatenate all arguments of your program with newline
+ * @ac: argument count
+ * @av: double pointer to array of strings passed to main
+ * Return: Null if fail, else return pointer to new string
  */
 
 char *argstostr(int ac, char **av)
 {
-	int i = 0, taille = 0, k = 0, j = 0;
-	char *str, *p;
+	char *a, *retp;
+	int i, j, total;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
+
+	for (i = 0, total = 0; i < ac; i++)
+	{
+		for (j = 0; *(*(av + i) + j) != '\0'; j++, total++)
+			;
+		total++;
+	}
+	total++;
+
+	a = malloc(total * sizeof(char));
+	if (a == NULL)
+		return (NULL);
+
+	retp = a;
 	for (i = 0; i < ac; i++)
 	{
-		taille = taille + ft_strlen(av[i]);
-	}
-
-	str = malloc((taille + ac + 1) * sizeof(char));
-
-	for (i = 1; i < ac; i++)
-	{
-		p = av[i];
-		while (p[k])
+		for (j = 0; av[i][j] != '\0'; j++)
 		{
-			str[j] = p[k];
-			k++;
-			j++;
+			*a = av[i][j];
+			a++;
 		}
-		str[j] = '\n';
-		j++;
-		k = 0;
+		*a = '\n';
+		a++;
 	}
-	return (str);
+
+	return (retp);
 }
