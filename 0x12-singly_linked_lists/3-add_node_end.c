@@ -1,49 +1,51 @@
+#include <stdio.h>
 #include "lists.h"
+#include <stdlib.h>
 #include <string.h>
 
 /**
- * add_node_end - Adds a new node at the end
- *                of a list_t list.
- * @head: A pointer the head of the list_t list.
- * @str: The string to be added to the list_t list.
+ * _strlen_recursion - function
  *
- * Return: If the function fails - NULL.
- *         Otherwise - the address of the new element.
+ * @s: the chaine
+ * Return: Always 0.
  */
+
+int _strlen_recursion(const char *s)
+{
+
+	if (*s == '\0')
+		return (0);
+	else
+		return (1 + _strlen_recursion(s + 1));
+}
+
+/**
+ * add_node_end - a function ...
+ * @head: the list
+ * @str: the chaine
+ *
+ * Return: 1 or 0
+ */
+
 list_t *add_node_end(list_t **head, const char *str)
 {
-	char *dup;
-	int len;
-	list_t *new, *last;
+	list_t *new, *ptr = *head;
 
-	new = malloc(sizeof(list_t));
+	new =  malloc(sizeof(list_t));
 	if (new == NULL)
 		return (NULL);
 
-	dup = strdup(str);
-	if (str == NULL)
-	{
-		free(new);
-		return (NULL);
-	}
-
-	for (len = 0; str[len];)
-		len++;
-
-	new->str = dup;
-	new->len = len;
+	new->str = strdup(str);
+	new->len = _strlen_recursion(str);
 	new->next = NULL;
 
-	if (*head == NULL)
-		*head = new;
-
-	else
+	if (ptr == NULL)
 	{
-		last = *head;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
+		*head = new;
+		return (*head);
 	}
-
-	return (*head);
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	ptr->next = new;
+	return (new);
 }
