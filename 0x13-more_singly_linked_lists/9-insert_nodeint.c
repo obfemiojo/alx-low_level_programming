@@ -1,48 +1,52 @@
-#include <stdio.h>
 #include "lists.h"
-#include <stdlib.h>
-#include <string.h>
-
-
+#include <stdio.h>
 /**
- * insert_nodeint_at_index - a function ...
- * @head: the list
- * @n: the chaine
- * @idx: the number
- *
- * Return: 1 or 0
+ * insert_nodeint_at_index - insert a new node at a given position
+ * @head: double pointer to head
+ * @index: insert node at this index, starting count at 0
+ * @n: value to store in node
+ * Return: Address of new node or NULL if failed
  */
-listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 {
-	listint_t *new, *ptr = *head, *save;
-	unsigned int cpt = 0;
+	listint_t *new;
+	listint_t *current;
+	unsigned int count;
 
-	new =  malloc(sizeof(listint_t));
-	if (new == NULL)
+	if (head == NULL)
 		return (NULL);
 
-	new->n = n;
-	new->next = NULL;
+	current = *head;
+	for (count = 1; current && count < index; count++)
+	{
+		current = current->next;
+		if (current == NULL)
+			return (NULL);
+	}
 
-	if (ptr == NULL || idx == 0)
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
+	new->n = n;
+
+	if (index == 0)
 	{
 		*head = new;
-		return (*head);
+		new->next = current;
 	}
-
-	while (cpt != idx - 1 && ptr->next != NULL)
+	else if (current->next)
 	{
-		ptr = ptr->next;
-		cpt++;
+		new->next = current->next;
+		current->next = new;
 	}
-
-	if (ptr->next == NULL)
-		ptr->next = new;
 	else
 	{
-		save = ptr->next;
-		ptr->next = new;
-		new->next = save;
+		new->next = NULL;
+		current->next = new;
 	}
+
 	return (new);
 }
