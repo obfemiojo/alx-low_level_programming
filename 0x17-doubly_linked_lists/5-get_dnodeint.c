@@ -1,6 +1,6 @@
 /*
  * File: 5-get_dnodeint.c
- * Author: Ukonu Divine Chisom
+ * Author: Ojo Obafemi David
  */
 
 #include "lists.h"
