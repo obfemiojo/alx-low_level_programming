@@ -1,6 +1,6 @@
 /*
  * File: 1-dlistint_len.c
- * Author: Ukonu Divine Chisom
+ * Author: Ojo Obafemi David
  */
 
 #include "lists.h"
