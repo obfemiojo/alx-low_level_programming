@@ -1,6 +1,6 @@
 /*
  * File: 6-sum_dlistint.c
- * Author: Ukonu Divine Chisom
+ * Author: Ojo Obafemi David
  */
 
 #include "lists.h"
