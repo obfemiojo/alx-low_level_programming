@@ -1,6 +1,6 @@
 /*
  * File: 8-delete_dnodeint.c
- * Author: Ukonu Divine Chisom
+ * Author: Ojo Obafemi David
  */
 
 #include "lists.h"
