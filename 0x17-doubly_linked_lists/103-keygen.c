@@ -1,6 +1,6 @@
 /*
  * File: 103-keygen.c
- * Author: Ukonu Divine Chisom
+ * Ojo Obafemi David
  */
 
 #include <stdio.h>
