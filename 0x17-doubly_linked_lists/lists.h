@@ -3,7 +3,7 @@
 
 /*
  * File: lists.h
- * Author: Ukonu Divine Chisom
+ * Author: Ojo Obafemi David
  */
 
 #include <stdio.h>
